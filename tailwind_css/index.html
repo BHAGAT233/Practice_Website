@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery with Upload, View & Delete</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #upload {
+      display: block;
+      margin: 0 auto 30px auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .image-container {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Image Gallery</h1>
+
+  <input type="file" id="upload" accept="image/*" multiple />
+
+  <div class="gallery" id="gallery">
+    <!-- Preloaded images -->
+    <div class="image-container">
+      <button class="delete-btn">×</button>
+      <img src="https://picsum.photos/id/1015/400/300" alt="Image">
+    </div>
+    <div class="image-container">
+      <button class="delete-btn">×</button>
+      <img src="https://picsum.photos/id/1020/400/300" alt="Image">
+    </div>
+    <div class="image-container">
+      <button class="delete-btn">×</button>
+      <img src="https://picsum.photos/id/1024/400/300" alt="Image">
+    </div>
+    <div class="image-container">
+      <button class="delete-btn">×</button>
+      <img src="https://picsum.photos/id/1035/400/300" alt="Image">
+    </div>
+  </div>
+
+  <!-- Modal for full image -->
+  <div class="modal" id="modal">
+    <img src="" alt="Full Image" id="modal-img">
+  </div>
+
+  <script>
+    const uploadInput = document.getElementById('upload');
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    // Add image to gallery
+    function addImageToGallery(src) {
+      const container = document.createElement('div');
+      container.classList.add('image-container');
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '×';
+      deleteBtn.classList.add('delete-btn');
+      deleteBtn.onclick = () => container.remove();
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Uploaded Image';
+
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modal.classList.add('active');
+      });
+
+      container.appendChild(deleteBtn);
+      container.appendChild(img);
+      gallery.appendChild(container);
+    }
+
+    // Handle file upload
+    uploadInput.addEventListener('change', function () {
+      const files = Array.from(this.files);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          addImageToGallery(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Add delete functionality to preloaded buttons
+    document.querySelectorAll('.delete-btn').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.target.closest('.image-container').remove();
+      });
+    });
+
+    // Close modal on click outside image
+    modal.addEventListener('click', function () {
+      modal.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>

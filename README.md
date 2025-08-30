@@ -31,3 +31,4 @@ git push origin main ;
 -: "shery": 'vite' ;
 8. npm run shery ; => it will run in loacal server ;
 ```
+
