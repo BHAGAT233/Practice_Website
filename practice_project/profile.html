@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Profile</title>
-  <style>
-    body {font-family: Arial, sans-serif; margin: 0; background: #f4f4f4;}
-    header, footer {background: #333; color: #fff; text-align: center; padding: 15px;}
-    nav {background: #444;}
-    nav ul {list-style: none; margin: 0; padding: 0; text-align: center;}
-    nav ul li {display: inline-block; margin: 0 15px;}
-    nav ul li a {color: #fff; text-decoration: none; font-weight: bold;}
-    .container {
-      max-width: 800px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 10px;
-    }
-    img {display: block; margin: 0 auto; width: 150px; height: 150px; border-radius: 50%;}
-    h2, h3 {color: #333; border-bottom: 2px solid #eee; padding-bottom: 5px;}
-    ul, ol {padding-left: 20px;}
-  </style>
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header><h1>My Profile</h1></header>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="grades.html">Grades</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="head">
+    <img src="NG_logo.png" alt="Dantewada">
+
+    <!-- Mobile Menu Toggle Button -->
+    <!-- <div class="mobile-menu-toggle" id="mobileMenuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div> -->
+
+    <nav>
+      <ul id="nav">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="Courses.html"><i class="fas fa-school"></i> Courses</a></li>
+        <li><a href="Feedback.html"><i class="fas fa-comment"></i> Feedback</a></li>
+        <li><a href="Grades.html"><i class="fas fa-table"></i> Grades_Table</a></li>
+        <li><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <hr>
   <div class="container">
-    <img src="https://via.placeholder.com/150" alt="Profile Picture">
+    <h1>My Profile</h1>
+    <img src="https://randomuser.me/api/portraits/lego/2.jpg" alt="Profile Picture" class="profile-img">
+
     <h2>Personal Details</h2>
-    <p>Hello! My name is Bantu. I am a student learning web development and coding at Navgurukul.</p>
+    <p>
+      Hello! My name is Aayush Sharma and I am a student at Aastha Vidya Mandir, Jawanga, Dantewada.<br>
+      I love learning new things, especially about computers and web development.
+    </p>
+
     <h3>Hobbies</h3>
     <ul>
-      <li>Coding</li><li>Archery</li><li>Reading Books</li><li>Exploring Ideas</li>
+      <li>Playing cricket</li>
+      <li>Coding front-end projects</li>
+      <li>Watching Hindi tutorial videos</li>
+      <li>Drawing and sketching</li>
     </ul>
+
     <h3>Goals</h3>
     <ol>
-      <li>Become a Full Stack Web Developer</li>
-      <li>Start my own successful startup</li>
-      <li>Promote sports in my region</li>
+      <li>To learn advanced JavaScript and UI design</li>
+      <li>To build my own website</li>
+      <li>To get admission into a top engineering college</li>
+      <li>To help other students learn to code</li>
     </ol>
   </div>
-  <footer>&copy; 2025 Student Portal</footer>
 </body>
+
 </html>
